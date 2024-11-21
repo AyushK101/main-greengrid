@@ -51,7 +51,7 @@ const PredictLoad = () => {
       distribution: parseFloat(values.distribution),
     };
 
-    const {data: res}: {data: resType} = await axios.post("http://localhost:9000/predict_view/",data)
+    const {data: res}: {data: resType} = await axios.post("http://ec2-13-201-74-99.ap-south-1.compute.amazonaws.com//predict_view/",data)
     console.log(res)
     setShowCard(true)
     setRes(res)

@@ -18,7 +18,7 @@ const ChatComponent: React.FC<ChatProps> = () => {
     e.preventDefault();
     setPending(true)  ;
     
-    const response = await axios.post("http://localhost:9000/gen/",message,{
+    const response = await axios.post("http://ec2-13-201-74-99.ap-south-1.compute.amazonaws.com/gen/",message,{
       headers: {
         "Content-Type": "application/json"
       }
