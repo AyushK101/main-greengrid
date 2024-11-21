@@ -42,7 +42,7 @@ const Header = async () => {
             ) : (
               <form action={async ()=>{
                 "use server"
-                const response  = await signIn('github');
+                await signIn('github');
               }
               }>
                 <button type='submit' className='button-util'>LOGIN</button>
