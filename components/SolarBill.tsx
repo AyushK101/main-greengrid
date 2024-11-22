@@ -45,7 +45,7 @@ const SolarBill = () => {
  
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
      e.preventDefault();
-     const response = await axios.post("http://ec2-13-201-74-99.ap-south-1.compute.amazonaws.com//calculate-solar/",{applianceList,city})
+     const response = await axios.post("https://ayushkumar.club//calculate-solar/",{applianceList,city})
     //  console.log("Form Submitted!", applianceList);
     setRes(response.data)
     setShowCard(true)
