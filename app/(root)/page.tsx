@@ -1,7 +1,7 @@
 import Header from "@/components/Header"
 import GenericSection from "@/components/GenericSection";
 import { genericType } from "@/types/genericSectionType";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";  
 import { Suspense } from "react";
 import Loader from "@/components/Loadder";
 
@@ -50,7 +50,7 @@ export default function Home() {
           return <GenericSection key={s.t1} {...s} />
         })}
       </section>
-      <Footer />
+     
       </Suspense>
     </>
 

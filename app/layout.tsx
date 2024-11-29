@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider"
-
+import Footer from '@/components/Footer'
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
@@ -62,6 +62,7 @@ export default function RootLayout({
            disableTransitionOnChange
         >
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
 

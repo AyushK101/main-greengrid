@@ -6,6 +6,8 @@ import { ApplianceListType, SolarResType } from '@/types/solarType'
 import {v4 as uuid4v} from 'uuid'
 import axios from 'axios'
 import SolarPredictResponse from './SolarPredictResponse'
+import LogoHome from '@/components/LogoHome'
+
 
 
 const SolarBill = () => {
@@ -17,38 +19,38 @@ const SolarBill = () => {
    const [usageHours, setUsageHours] = useState(0);
    const [showCard,setShowCard] = useState(false);
    const [res,setRes] = useState<SolarResType>({"city": "Mumbai", "solar_requirement": 0.44});
+   const [loading, setLoading] = useState(false);
  
    const handleAddAppliance = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
      // Validate inputs
     e.preventDefault();
-     if (!appliance || quantity <= 0 || usageHours <= 0) {
+     if (!appliance || quantity <= 0 || usageHours <= 0 ) {
        alert("Please fill all fields with valid values.");
-       return;
-     }
-     if(city == "") {
+     } else if (city == "") {
       alert("please enter city");
-      return;
+     } else if (usageHours > 24) {
+      alert("usage hours can't be more than 24");
+     } else {
+      const id = String(uuid4v());
+      setApplianceList([
+        ...applianceList,
+        { id, appliance, quantity, usageHours },
+      ]);
      }
- 
-     // Add appliance to the list
-     const id = String(uuid4v());
-     setApplianceList([
-       ...applianceList,
-       { id, appliance, quantity, usageHours },
-     ]);
- 
-     // Reset fields
-    //  setAppliance("");
-    //  setQuantity(1);
-    //  setUsageHours(0);
    };
  
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
      e.preventDefault();
-     const response = await axios.post("https://ayushkumar.club//calculate-solar/",{applianceList,city})
-    //  console.log("Form Submitted!", applianceList);
-    setRes(response.data)
-    setShowCard(true)
+     if(applianceList.length < 1) {
+      alert("at least one data is required");
+     } else {
+      setLoading(true);
+      const response = await axios.post("http://localhost:9000/calculate-solar/",{applianceList,city})
+      setLoading(false  )
+      setRes(response.data)
+      setShowCard(true)
+     }
+
      // Perform further actions, like sending data to a backend
    };
  
@@ -56,6 +58,10 @@ const SolarBill = () => {
     <>
     { showCard && applianceList.length > 0 && <SolarPredictResponse res={res} setShowCard={setShowCard}/>}
      <div className={`${clx} grid grid-cols-1  md:grid-cols-2 gap-2 overflow-x-hidden `}>
+      <div className=" logohide:hidden">
+        <LogoHome/>
+        </div>
+
       <div className="relative left-2 justify-self-end top-16 p-3  min-w-full backdrop-blur-lg h-fit rounded-lg border-2 ">
        <h1 className="text-2xl font-bold text-center min-w-full">Solar Panel Calculator</h1>
        <form
@@ -110,7 +116,6 @@ const SolarBill = () => {
            </select>
          </label>
  
-         {/* Quantity Input */}
          <label className="block">
            <span className="text-gray-700">Quantity</span>
            <input
@@ -122,7 +127,6 @@ const SolarBill = () => {
               setQuantity(Number.isNaN(value) ? 0 : value)}}
              placeholder="Number of appliances"
              min="1"
-             max="50"
              className="mt-1 block w-full  rounded-md p-2 bg-transparent border-2"
            />
          </label>
@@ -145,9 +149,9 @@ const SolarBill = () => {
            />
          </label>
  
-         {/* Add Appliance Button */}
          <button
            type="button"
+           disabled={loading}
            onClick={(e) => handleAddAppliance(e)}
            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
          >
@@ -158,9 +162,11 @@ const SolarBill = () => {
          {/* Submit Button */}
          <button
            type="submit"
+           disabled={loading}
            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
          >
-           Calculate Solar Requirement
+           
+           {loading ? "Calcuating ........." : "Calculate Solar Requirement"} 
          </button>
        </form>
      </div>

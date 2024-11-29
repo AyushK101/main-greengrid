@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Button } from './ui/button'
 import Link from 'next/link'
@@ -15,7 +16,7 @@ const GenericSection = ({t1,t2,desc,urlImg,urlPage, o1, o2}: genericType) => {
           <Button  className='bg-blue-500 hover:bg-blue-600 font-extrabold' type='button'><Link href={`${urlPage}`}>VISIT</Link></Button>
         </div>
         <div className={`${o1} place-items-center`}>
-          <Image src={`${urlImg}`} alt={`section-${t1}}`} width={300} height={300}  />
+          <Image src={`${urlImg}`} alt={`section-${t1}}`} width={300} height={300}  unoptimized/>
         </div>
       </div>
     </div>

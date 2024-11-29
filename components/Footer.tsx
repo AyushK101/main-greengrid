@@ -10,7 +10,7 @@ const Footer = () => {
           </Link>
       <h1 className='text-pretty text-xl font-bold'>
         -GreenGrid
-        <h1 className=''> @Innotech_2k24</h1>  
+        <p className=''> @Innotech_2k24</p>  
       </h1>
       
     </div>

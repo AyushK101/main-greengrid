@@ -13,26 +13,30 @@ const MobileDropdown = async () => {
           <DropdownMenu >
             <DropdownMenuTrigger><Menu className="text-white" size={55} /></DropdownMenuTrigger>
             <DropdownMenuContent>
-            ;
             {/* <DropdownMenuItem className='min-w-full'>
                 <Link href={'chat'}>
                 <Button type='submit' size={'dropdown'} >Energy Analytics</Button>
               </Link>
             </DropdownMenuItem> */}
             
-            <DropdownMenuItem className='min-w-full'>
-                <Link href={'/'}>
-                <Button type='submit' className='min-w-full m-0 !bg-green-400' >Load Predictor</Button>
+            <DropdownMenuItem >
+                <Link href={'/predict'}>
+                <Button type='submit'   className=' dropdown-button !bg-green-500 mx-auto '><pre> </pre>predict<pre></pre></Button>
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem >
                 <Link href={'/solar'}>
-                <Button type='submit' size={'dropdown'} className='!bg-green-400'>Solar Calculator</Button>
+                <Button type='submit'   className=' dropdown-button !bg-green-500 mx-auto '>Solar Calc</Button>
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-                <Link href={'/donation'}>
-                <Button type='submit' size={'dropdown'}  className='!bg-green-400 mx-auto'  >DONATE</Button>
+            <DropdownMenuItem >
+                <Link href={'/chat'}>
+                <Button type='submit'   className=' dropdown-button !bg-green-500 mx-auto '><pre></pre>Chatbot<pre></pre></Button>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem >
+                <Link href={'/visual'}>
+                <Button type='submit'   className='min-w-full dropdown-button !bg-green-500'><pre></pre>visulalize<pre></pre></Button>
               </Link>
             </DropdownMenuItem>
 
@@ -41,7 +45,6 @@ const MobileDropdown = async () => {
             <DropdownMenuItem>
               <AuthComponent />
             </DropdownMenuItem>
-
             </DropdownMenuContent>
           </DropdownMenu>
           

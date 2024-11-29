@@ -8,6 +8,24 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+  screens: {
+    'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+      'predict': '1140px',
+      'logohide': "524px"
+  },
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
@@ -22,7 +40,7 @@ export default {
         neutralGray2: "#E5E5E5",
         deepBlue: "#003366",
         earthlyBrown: "#8B4513",
-
+        subTitle: "#228B22",
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
