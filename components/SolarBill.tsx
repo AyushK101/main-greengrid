@@ -45,7 +45,7 @@ const SolarBill = () => {
       alert("at least one data is required");
      } else {
       setLoading(true);
-      const response = await axios.post("http://localhost:9000/calculate-solar/",{applianceList,city})
+      const response = await axios.post("https://ayushkumar.club/calculate-solar/",{applianceList,city})
       setLoading(false  )
       setRes(response.data)
       setShowCard(true)

@@ -56,7 +56,7 @@ const PredictLoad = () => {
     
     // const data = [...data,]
     console.log("dev",process.env.DEVELOPMENT_URI)
-    const {data: res}: {data: resType} = await axios.post(`http://localhost:9000/predict_view/`,data)
+    const {data: res}: {data: resType} = await axios.post(`https://ayushkumar.club/predict_view/`,data)
     console.log(res)
     setShowCard(true)
     setRes(res)
